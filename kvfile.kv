@@ -1,0 +1,1350 @@
+##### KVFile #####
+
+WinManager:
+	SplashWin:
+	SignupWin:
+	LoginWin:
+	HomeWin:
+	NetworkWin:
+	LoadWin:
+	LoadsCalcWin:
+	CalibreWin:
+	HistoryWin:
+	AboutWin:
+
+##### Splash Window #####
+
+<SplashWin>:
+	name: "Splash"
+	
+	MDFloatLayout:
+		md_bg_color: 0, 180/255, 170/255, 1
+		on_touch_move:
+			root.manager.current = "Login"
+			root.manager.transition.direction = "left"
+		Image: 
+			source: "imgs/logo.png"
+			size_hint: .38, .38
+			pos_hint: {"center_x": .5, "center_y": .5}
+		Image: 
+			source: "imgs/imgensam.png"
+			#size_hint: .4, .4
+			size_hint: None, None
+			size: "150dp", "150dp"
+			pos_hint: {"center_x": .5, "center_y": .85}
+		MDLabel:
+			text: "caliBREaker"
+			pos_hint: {"center_x": .5, "center_y": .2}
+			halign: "center"
+			theme_text_color: "Custom"
+			text_color: 1, 1, 1, 1
+			font_size: "35sp"
+			font_name: "fonts/Poppins/Poppins-SemiBold.ttf"
+		MDLabel:
+			text: "Number #1 in Circuit Breakers Rating"
+			pos_hint: {"center_x": .5, "center_y": .15}
+			halign: "center"
+			theme_text_color: "Custom"
+			text_color: 1, 1, 1, 1
+			font_size: "13sp"
+			font_name: "fonts/Poppins/Poppins-Regular.ttf"
+
+##### Login Window #####
+
+<LoginWin>:
+	name: "Login"
+	login_uname: login_uname
+	login_pw: login_pw	
+	login_msg: login_msg
+	
+	MDFloatLayout:
+		md_bg_color: 1, 1, 1, 1
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDIconButton:
+			icon: "chevron-left"
+			user_font_size: "35sp"
+			pos_hint: {"center_x": .08, "center_y": .95}
+			on_release:
+				root.manager.current = "Splash"
+				root.manager.transition.direction = "right"
+				login_uname.text = ''
+				login_pw.text = ''
+				root.sup_auth_txt()
+		MDLabel:
+			text: "Back"
+			font_size: "18sp"
+			font_name: "fonts/Poppins/Poppins-Regular.ttf"
+			pos_hint: {"center_x": .615, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(80)
+			pos_hint: {"x": .1,"top": .84}
+			Image: 
+				source: "imgs/logo1.png"
+				size_hint: None, None
+				size: "90dp", "90dp"
+				pos_hint: {"x": 0, "center_y": .8}
+			MDLabel:
+				text: "caliBREaker"
+				pos_hint: {"x": .27, "center_y": .8}
+				color: 0, 180/255, 180/255, 1
+				font_size: "30sp"
+				font_name: "fonts/Poppins/Poppins-SemiBold.ttf"
+		MDLabel:
+			text: "Proceed with your"
+			font_size:"22sp"
+			font_name: "fonts/Poppins/Poppins-Medium.ttf"
+			color: 100/255, 104/255, 134/255, 1
+			pos_hint: {"center_x": .6, "center_y": .65}
+		MDLabel:
+			text: "Login"
+			font_size:"28sp"
+			font_name: "fonts/Poppins/Poppins-SemiBold.ttf"
+			color: 40/255, 44/255, 74/255, 1
+			pos_hint: {"center_x": .6, "center_y": .58}
+		MDLabel:
+			id: login_msg
+			text: root.auth_txt
+			font_size:"15sp"
+			font_name: "fonts/Poppins/Poppins-Medium.ttf"
+			pos_hint: {"center_x": .6, "center_y": .51}
+		MDFloatLayout:
+			size_hint: .79, .08
+			pos_hint: {"center_x": .5, "center_y": .42}
+			MDLabel: 
+				text: "Username"
+				font_size: "15sp"
+				font_name: "fonts/Poppins/Poppins-Medium.ttf"
+				pos_hint: {"center_x": .5, "center_y": .9}
+			TextInput:
+				id: login_uname 
+				size_hint_y: .75
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .5, "center_y": .4}
+				background_color: 0, 0, 0, 0
+				cursor_color: 0, 0, 0, 1
+				cursor_width: "2dp"
+				foreground_color: 120/255, 120/255, 120/255, 1
+				font_size: "17dp"
+				multiline: False
+				write_tab: False	
+			Image:
+				source: "imgs/user.png"
+				pos_hint: {"center_x": .94, "center_y": .56}
+				size_hint: .7, .7
+			MDFloatLayout:
+				pos_hint: {"center_x": .5, "center_y": .1}
+				size_hint_y: .03 
+				md_bg_color: 120/255, 120/255, 120/255, 1
+				
+			MDLabel: 
+				text: "Password"
+				font_size: "15sp"
+				font_name: "fonts/Poppins/Poppins-Medium.ttf"
+				pos_hint: {"center_x": .5, "center_y": -.6}
+			TextInput: 
+				id: login_pw
+				size_hint_y: .75
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .5, "center_y": -1.1}
+				background_color: 0, 0, 0, 0
+				cursor_color: 0, 0, 0, 1
+				cursor_width: "2dp"
+				foreground_color: 120/255, 120/255, 120/255, 1
+				font_size: "17dp"
+				multiline: False
+				password: True
+				write_tab: False
+				on_text_validate: 
+					root.logButt()
+					login_uname.text = ''
+					login_pw.text = ''
+					#root.manager.current = "Home" if login_msg.color == [31/255, 108/255, 153/255, 1] else "Login"	
+			Image:
+				source: "imgs/pw.png"
+				pos_hint: {"center_x": .94, "center_y": -.94}
+				size_hint: .6, .6
+			MDFloatLayout:
+				pos_hint: {"center_x": .5, "center_y": -1.41}
+				size_hint_y: .03 
+				md_bg_color: 120/255, 120/255, 120/255, 1
+		MDFillRoundFlatButton:
+			md_bg_color: 0, 138/255, 124/255, .5
+			text: "login"
+			background_color: 0,0,0,0
+			font_name: "fonts/Poppins/Poppins-Medium.ttf"
+			size_hint: .7, .08
+			font_size: "17dp"
+			pos_hint: {"center_x": .5, "center_y": .15}
+			on_release: 
+				root.logButt()
+				login_uname.text = ''
+				login_pw.text = ''
+				#root.manager.current = "Home" if login_msg.color == [31/255, 108/255, 153/255, 1] else "Login"
+				#root.manager.transition.direction = "left"
+		MDTextButton:
+			text: "Don't have an account yet? Sign Up"
+			font_size: "14dp"
+			pos_hint: {"center_x": .5, "center_y": .07}
+			halign: "center"
+			color: 40/255, 44/255, 74/255, 1
+			on_release:
+				root.manager.current = "SignUp"
+				root.manager.transition.direction = "left"
+				login_uname.text = ''
+				login_pw.text = ''
+				root.sup_auth_txt()
+			
+
+##### SignUp Window #####
+
+<SignupWin>:
+	name: "SignUp"
+	signup_uname: signup_uname
+	signup_email: signup_email	
+	signup_pw: signup_pw	
+	signup_cpw: signup_cpw	
+	
+	signup_msg: signup_msg
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDIconButton:
+			icon: "chevron-left"
+			user_font_size: "35sp"
+			pos_hint: {"center_x": .08, "center_y": .95}
+			on_release:
+				app.root.current = "Login"
+				root.manager.transition.direction = "right"
+				signup_msg.text = ''
+				signup_uname.required = False
+				signup_email.required = False
+				signup_pw.required = False
+				signup_cpw.required = False
+				signup_uname.text = ''
+				signup_email.text = ''
+				signup_pw.text = ''
+				signup_cpw.text = ''
+				signup_uname.focus = True
+				signup_email.focus = True
+				signup_pw.focus = True
+				signup_cpw.focus = True
+
+		MDLabel:
+			text: "Back"
+			font_size: "18sp"
+			font_name: "fonts/Poppins/Poppins-Regular.ttf"
+			pos_hint: {"center_x": .615, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: None, None
+			#size: 320, 460
+			size: root.width - 30, root.height - 140
+			pos_hint: {"center_x": .5, "center_y": .5}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+		MDLabel:
+			text: "Sign Up"
+			font_size:"28sp"
+			font_name: "fonts/Poppins/Poppins-SemiBold.ttf"
+			color: 40/255, 44/255, 74/255, 1
+			pos_hint: {"center_x": .6, "center_y": .82}
+		MDLabel:
+			id: signup_msg
+			text: root.req_fields_txt
+			font_size:"15sp"
+			font_name: "fonts/Poppins/Poppins-Medium.ttf"
+			pos_hint: {"center_x": .59, "center_y": .75}
+	
+	MDTextField:
+		id: signup_uname 
+    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+		hint_text: "Username"
+		required: root.uname_req
+		helper_text_mode: "on_error"
+		helper_text: "Only alphanumeric characters !"
+		size_hint: .75, None
+		pos_hint: {"center_x": .5, "center_y": .68}
+		write_tab: False
+		on_touch_down: self.text = ''
+	MDTextField:
+		id: signup_email
+    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+		hint_text: "Email"
+		required: root.email_req
+		helper_text_mode: "on_error"
+		helper_text: "Invalid email !"
+		size_hint: .75, None
+		pos_hint: {"center_x": .5, "center_y": .56}
+		write_tab: False
+		on_touch_down: self.text = ''
+	MDTextField:
+		id: signup_pw
+    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+		hint_text: "Password"
+		required: root.pw_req
+		helper_text_mode: "on_error"
+		helper_text: "Must be +8 alphanumeric characters !"
+		size_hint: .75, None
+		pos_hint: {"center_x": .5, "center_y": .44}
+		password: True
+		write_tab: False
+		on_touch_down: self.text = ''		
+	MDTextField:
+		id: signup_cpw
+    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+		hint_text: "Confirm Password"
+		required: root.cpw_req
+		helper_text_mode: "on_error"
+		helper_text: "Passwords don't match !"
+		size_hint: .75, None
+		pos_hint: {"center_x": .5, "center_y": .32}
+		password: True
+		write_tab: False
+		on_text_validate: root.signButt()
+		on_touch_down: self.text = ''
+	MDFillRoundFlatButton:
+		md_bg_color: 19/255, 123/255, 157/255, .5
+		text: "sign up"
+		background_color: 0,0,0,0
+		font_name: "fonts/Poppins/Poppins-Medium.ttf"
+		size_hint: .7, .08
+		font_size: "17dp"
+		pos_hint: {"center_x": .5, "center_y": .18}
+		on_press: 
+			root.signButt()
+			signup_cpw.focus = False
+
+##### Home Window #####
+
+<HomeWin>:
+	name: "Home"
+	user_name: ""
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: u_name
+				text: root.user_name
+				#text: root.manager.get_screen("Login").ids.login_uname.text
+				#text: root.username_txt
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+			spacing: 30
+			
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(50)
+				pos_hint: {"left": .5}
+		        
+				MDLabel:
+					text: "Home"
+					font_size:"24sp"
+					font_name: "fonts/Poppins/Poppins-Medium.ttf"
+					color: 24/255, 120/255, 144/255, 1
+					pos_hint: {"center_x": .75, "top": 1}
+				    canvas.before:
+				        Color:
+				            rgba: 100/255, 104/255, 134/255, .8
+				        Line:
+				            points: self.center_x-10,self.center_y-16,self.center_x-67,self.center_y-16
+							width: 2
+				MDIconButton:
+					icon: "home"
+				    theme_text_color: "Custom"
+				    text_color: 100/255, 104/255, 134/255, .8
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .1, "top": 1}
+
+			MDFloatLayout:
+				orientation: "vertical"
+				size_hint: 1, .1
+
+			MDFillRoundFlatButton:
+				md_bg_color: 0/255, 132/255, 162/255, .5
+				text: "CHOIX DE CALIBRE"
+				font_name: "fonts/Poppins/Poppins-Bold.ttf"
+				size_hint: .8, None
+				height: "20dp"
+				font_size: "17dp"
+				pos_hint: {"center_x": .5}
+				on_press:
+					root.manager.current = "Network"
+					root.manager.transition.direction = "left"
+					root.manager.get_screen("Network").ids._uname.text = root.ids.u_name.text
+					root.manager.get_screen("Load").ids._uname.text = root.ids.u_name.text
+					root.manager.get_screen("LoadsCalc").ids._uname.text = root.ids.u_name.text
+					root.manager.get_screen("Calibre").ids._uname.text = root.ids.u_name.text
+			
+			MDFillRoundFlatButton:
+				md_bg_color: 0/255, 132/255, 162/255, .5
+				text: "HISTORIQUE"
+				font_name: "fonts/Poppins/Poppins-Bold.ttf"
+				size_hint: .8, None
+				height: "20dp"
+				font_size: "17dp"
+				pos_hint: {"center_x": .5}
+				on_press:
+					root.manager.get_screen("History").ids._uname.text = root.ids.u_name.text
+					root.historyConstructor() 
+					root.manager.current = "History"
+					root.manager.transition.direction = "left"
+			
+			MDFillRoundFlatButton:
+				md_bg_color: 0/255, 132/255, 162/255, .5
+				text: "A PROPOS"
+				font_name: "fonts/Poppins/Poppins-Bold.ttf"
+				size_hint: .8, None
+				height: "20dp"
+				font_size: "17dp"
+				pos_hint: {"center_x": .5}
+				on_press:
+					root.manager.get_screen("About").ids._uname.text = root.ids.u_name.text 
+					root.manager.current = "About"
+					root.manager.transition.direction = "left"
+				
+			MDFloatLayout:
+				orientation: "vertical"
+				size_hint: 1, 1
+
+
+		
+
+
+
+##### Network Window #####
+
+<NetworkWin>:
+	name: "Network"
+	voltage_value: voltage_value
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: _uname
+				#text: root.manager.get_screen("Home").ids.u_name.text
+				#text: root.manager.get_screen("Login").ids.login_uname.text
+				#text: root.username_txt
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+			spacing: 20
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.manager.current = "Home"
+						root.manager.transition.direction = "right"
+						root.ids.mono_box.active = False
+						root.ids.tri_box.active = False
+						root.ids.voltage_value.required = False
+						root.ids.voltage_value.text = ''
+						root.ids.voltage_value.required = True
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+							
+
+			
+			MDFloatLayout:	
+				size_hint: 1, None
+				height: dp(400)
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .94}
+					
+					MDLabel:
+						text: "Type du Réseau :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": 1}
+
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(80)
+					pos_hint: {'center_x': .5, 'top': .85}
+					
+				    MDCheckbox:
+				    	id: mono_box
+				    	group: 'group'
+				        pos_hint: {'x': .1, 'top': .9}
+				        size_hint: .1, .3
+				    MDCheckbox:
+				    	id: tri_box
+				    	group: 'group'
+				        pos_hint: {'x': .1, 'top': .4}
+				        size_hint: .1, .3
+
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(40)
+					pos_hint: {'center_x': .5, 'top': .85}
+
+					MDLabel:
+						color: 24/255, 120/255, 144/255, 1
+						text: "Monophasé"
+						font_size: "17sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .2, "top": 1}
+
+					MDLabel:
+						color: 24/255, 120/255, 144/255, 1
+						text: "Triphasé"
+						font_size: "17sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .2, "top": .01}
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(50)
+					pos_hint: {'center_x': .5, 'top': .6}
+
+					MDLabel:
+						text: "Tension simple du réseau :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": 1}
+					MDTextField:
+						id: voltage_value
+				    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+				    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+						hint_text: "Voltage value in volts"
+						required: True
+						helper_text_mode: "on_error"
+						helper_text: "This field is required !"
+						size_hint: .75, None
+						pos_hint: {"center_x": .5, "top": .01}
+						write_tab: False
+				
+				MDFillRoundFlatButton:
+					md_bg_color: 14/255, 146/255, 193/255, .5
+					text: "Next ..."
+					background_color: 0,0,0,0
+					font_name: "fonts/Poppins/Poppins-Medium.ttf"
+					size_hint: .7, .12
+					font_size: "17dp"
+					pos_hint: {"center_x": .5, "center_y": .2}
+					on_release:
+						root.network_properties()
+						
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .05}
+
+					MDLabel:
+						id: network_error
+						color: 215/255, 49/255, 49/255
+						font_size: "15sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": 0.1}
+
+					
+			
+			MDFloatLayout:
+				orientation: "vertical"
+				size_hint: 1, 1
+
+
+##### Load Window #####
+
+<LoadWin>:
+	name: "Load"
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: _uname
+				#text: root.manager.get_screen("Home").ids.u_name.text
+				#text: root.manager.get_screen("Login").ids.login_uname.text
+				#text: root.username_txt
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.manager.current = "Network"
+						root.manager.transition.direction = "right"
+						root.set_up_load_page()
+						root.reset_loads()
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+							
+
+			
+			MDFloatLayout:	
+				size_hint: 1, None
+				height: dp(50)
+
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': 0.4}
+					MDLabel:
+						text: 'Départ'
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Bold.ttf"
+						pos_hint: {"x": .1, "top": 1}
+			
+				MDFloatLayout:
+					size_hint: .5, None
+					height: dp(40)
+					pos_hint: {'center_x': .7, 'top': .7}
+
+					MDFillRoundFlatButton:
+						id: add_load
+						md_bg_color: 8/255, 170/255, 184/255, .5
+						text: "+ Charge"
+						background_color: 0,0,0,0
+						font_name: "fonts/Poppins/Poppins-Medium.ttf"
+						size_hint: .7, .9
+						font_size: "17dp"
+						pos_hint: {"center_x": .5, "top": .93}
+						on_press:
+							root.show_load_boxes()
+				
+				
+			MDFloatLayout:	
+				size_hint: 1, None
+				height: dp(400)
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': root.load_type_labels}
+					
+					MDLabel:
+						text: "Type de Charge :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": 1}
+						
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(80)
+					pos_hint: {'center_x': .5, 'top': root.load_type_boxes}
+					
+				    MDCheckbox:
+				    	id: res_box
+				    	group: 'group'
+				        pos_hint: {'x': .1, 'top': .8}
+				        size_hint: .1, .3
+				    MDCheckbox:
+				    	id: ind_box
+				    	group: 'group'
+				        pos_hint: {'x': .1, 'top': .4}
+				        size_hint: .1, .3
+
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(40)
+					pos_hint: {'center_x': .5, 'top': root.load_types}
+
+					MDLabel:
+						color: 24/255, 120/255, 144/255, 1
+						text: "Charge Résistive"
+						font_size: "17sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .2, "top": .8}
+
+					MDLabel:
+						color: 24/255, 120/255, 144/255, 1
+						text: "Charge Inductive"
+						font_size: "17sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .2, "top": .01}
+
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(200)
+					pos_hint: {'center_x': .5, 'top': .85 if (root.ids.ind_box.active == True or root.ids.res_box.active == True) else 10}
+
+					MDLabel:
+						text: "Puissance nominal :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": .95}
+					MDTextField:
+						id: power_rating
+				    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+				    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+						hint_text: "Power rating in kilowatts"
+						required: True
+						helper_text_mode: "on_error"
+						helper_text: "This field is required !"
+						size_hint: .75, None
+						pos_hint: {"center_x": .5, "top": .4}
+						write_tab: False
+						
+				MDFloatLayout:
+					
+					size_hint: 1, None
+					height: dp(100)
+					pos_hint: {'center_x': .5, 'top': .5 if (root.ids.ind_box.active == True) else 10}
+
+					MDLabel:
+						text: "Facteur de puissance :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": .9}
+					MDTextField:
+						id: cos_phi
+				    	font_name_hint_text: "fonts/Poppins/Poppins-Light.ttf"
+				    	font_name: "fonts/Poppins/Poppins-Medium.ttf"
+						hint_text: "Cos phi value (max=1)"
+						required: True
+						helper_text_mode: "on_error"
+						helper_text: "This field is required !"
+						size_hint: .75, None
+						pos_hint: {"center_x": .5, "top": .3}
+						write_tab: False
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .15}
+
+					MDLabel:
+						id: load_error
+						color: 215/255, 49/255, 49/255
+						font_size: "15sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": 1}
+						
+				MDFillRoundFlatButton:
+					md_bg_color: 14/255, 146/255, 193/255, .5
+					text: "Next ..."
+					background_color: 0,0,0,0
+					font_name: "fonts/Poppins/Poppins-Medium.ttf"
+					size_hint: .7, .1
+					font_size: "17dp"
+					pos_hint: {"center_x": .5, "top": .1}
+					on_press: 
+						root.load_next()
+			
+			MDFloatLayout:
+				orientation: "vertical"
+				size_hint: 1, 1
+
+				
+
+##### Loads Calc Window #####
+
+<LoadsCalcWin>:
+	name: "LoadsCalc"
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+				on_press: root.write_loads()
+			MDLabel:
+				id: _uname
+				#text: root.manager.get_screen("Home").ids.u_name.text
+				#text: root.manager.get_screen("Login").ids.login_uname.text
+				#text: root.username_txt
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.removeWidget()
+						root.manager.current = "Load"
+						root.manager.transition.direction = "right"
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+							
+			MDFloatLayout:	
+				size_hint: 1, .8
+				#height: dp(500)
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .9}
+					
+					MDLabel:
+						text: "Charges du départ :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .1, "top": .9}
+
+					MDFloatLayout:
+						size_hint: .5, None
+						height: dp(40)
+						pos_hint: {'center_x': .7, 'top': .7}
+	
+						MDFillRoundFlatButton:
+							id: add_load
+							md_bg_color: 200/255, 1/255, 92/255, .5
+							text: "Suppr Charges"
+							background_color: 0,0,0,0
+							font_name: "fonts/Poppins/Poppins-Medium.ttf"
+							size_hint: 1, .8
+							font_size: "15dp"
+							pos_hint: {"center_x": .6, "top": 2.3}
+							on_release: root.remove_loads()
+
+				
+				MDFloatLayout:
+					size_hint: 1, .85
+					pos_hint: {'center_x': .5, 'top': .95}
+
+					ScrollView:
+						size_hint: 1, .8
+						pos_hint: {'center_x': .5, 'top': .85}
+					    MDList:
+					        id: container
+					    	pos_hint: {'center_x': .5, 'top': .94}
+				MDFloatLayout:	
+					size_hint: 1, .1
+				MDFillRoundFlatButton:
+					md_bg_color: 14/255, 146/255, 193/255, .5
+					text: "Calculer le calibre"
+					background_color: 0,0,0,0
+					font_name: "fonts/Poppins/Poppins-Medium.ttf"
+					size_hint: .7, None
+					height: dp(50)
+					font_size: "17dp"
+					pos_hint: {"center_x": .5, "top": .1}
+					on_press: root.calculateBreakers()
+	
+					
+##### Calibre Window #####
+
+<CalibreWin>:
+	name: "Calibre"
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: _uname
+				#text: root.manager.get_screen("Home").ids.u_name.text
+				#text: root.manager.get_screen("Login").ids.login_uname.text
+				#text: root.username_txt
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.removeWidget()
+						root.manager.current = "LoadsCalc"
+						root.manager.transition.direction = "right"
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+							
+			MDFloatLayout:	
+				size_hint: 1, .8
+				#height: dp(500)
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .9}
+					
+					MDLabel:
+						text: "Calibres des disjoncteurs :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .09, "top": 0.9}
+				
+				MDFloatLayout:
+					size_hint: 1, .85
+					pos_hint: {'center_x': .5, 'top': .95}
+
+					ScrollView:
+						size_hint: 1, .8
+						pos_hint: {'center_x': .5, 'top': .85}
+					    MDList:
+					        id: container
+					    	pos_hint: {'center_x': .5, 'top': .94}
+				MDFloatLayout:	
+					size_hint: 1, .1
+				MDFillRoundFlatButton:
+					md_bg_color: 14/255, 146/255, 193/255, .5
+					text: "Download document"
+					background_color: 0,0,0,0
+					font_name: "fonts/Poppins/Poppins-Medium.ttf"
+					size_hint: .7, None
+					height: dp(50)
+					font_size: "17dp"
+					pos_hint: {"center_x": .5, "top": .1}
+					on_press: root.choose_path()
+					
+		
+
+##### About Window #####
+
+<AboutWin>:
+	name: "About"
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: _uname
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+			spacing: 20
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.manager.current = "Home"
+						root.manager.transition.direction = "right"
+
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+			
+			MDFloatLayout:
+				size_hint: 1, None
+				height: dp(400)		
+				pos_hint: {"center_x": .5, "top": .8}		
+
+				MDLabel:
+					text: "Projet de fin d'année 2021/2022\nEcole Nationale Supérieure d'Arts et Métiers de Rabat / 2FI-EEIN\n\nCe projet consiste en la création d'une application (logiciel) permettant de faire les calculs des courants d'un départ d'une installation électrique basse tension afin d'en choisir le calibre des différents disjoncteurs constituant le départ.\n\n Réalisé par :\n - OULAASRI Yassine\n - LASRI Abderrahmane\n\n Encadré par :\n - M. Azzouz LOUKDACHE"
+					font_size: "16sp"
+					font_name: "fonts/Poppins/Poppins-Light.ttf"
+					pos_hint: {"center_x": .5, "top": .95}
+
+					
+			
+			MDFloatLayout:
+				orientation: "vertical"
+				size_hint: 1, 1
+					
+		
+
+##### History Window #####
+
+<HistoryWin>:
+	name: "History"
+	
+	MDFloatLayout:
+		Image:
+			source: "imgs/bg3.png"
+			pos_hint: {"center_x": .5, "center_y": .5}
+			size_hint: 1.7, 1.7
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"right": .99,"top": .95}
+			MDIconButton:
+				icon: "logout"
+				user_font_size: "28sp"
+				pos_hint: {"center_x": .92, "center_y": .95}
+				on_release:
+					app.root.current = "Login"
+					root.manager.transition.direction = "left"
+			MDLabel:
+				text: "Logout"
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": 1.2, "center_y": .949}
+		MDFloatLayout:
+			size_hint: None, None
+			width: dp(370)
+			height: dp(50)
+			pos_hint: {"x": .02,"top": .95}
+			MDIconButton:
+				icon: "account-circle-outline"
+				user_font_size: "32sp"
+				pos_hint: {"center_x": .09, "center_y": .949}
+			MDLabel:
+				id: _uname
+				font_size: "18sp"
+				font_name: "fonts/Poppins/Poppins-Regular.ttf"
+				pos_hint: {"center_x": .65, "center_y": .949}
+		MDCard:
+			orientation: "vertical"
+			size_hint: .95, .85
+			pos_hint: {"center_x": .5, "top": .9}
+			md_bg_color: 1,1,1,.6
+			elevation: 1
+			radius: 12
+			padding: dp(20),dp(20),dp(20),dp(20)
+			spacing: 20
+
+			MDFloatLayout:
+				size_hint: None, None
+				width: dp(140)
+				height: dp(10)
+				pos_hint: {"left": 1}
+				MDIconButton:
+					icon: "chevron-left"
+					user_font_size: "35sp"
+					pos_hint: {"center_x": .07, "center_y": .84}
+					on_release:
+						root.manager.current = "Home"
+						root.manager.transition.direction = "right"
+						root.removeWidget()
+
+				MDLabel:
+					text: "Back"
+					font_size: "18sp"
+					font_name: "fonts/Poppins/Poppins-Regular.ttf"
+					pos_hint: {"center_x": .64, "center_y": .841}
+							
+
+			MDFloatLayout:	
+				size_hint: 1, .8
+				#height: dp(500)
+				
+				MDFloatLayout:
+					size_hint: 1, None
+					height: dp(10)
+					pos_hint: {'center_x': .5, 'top': .9}
+					
+					MDLabel:
+						text: "Départs calculés :"
+						font_size: "18sp"
+						font_name: "fonts/Poppins/Poppins-Regular.ttf"
+						pos_hint: {"x": .08, "top": .9}
+
+					MDFloatLayout:
+						size_hint: .5, None
+						height: dp(40)
+						pos_hint: {'center_x': .7, 'top': .7}
+	
+						MDFillRoundFlatButton:
+							md_bg_color: 200/255, 1/255, 92/255, .5
+							text: "Vider l'historique"
+							background_color: 0,0,0,0
+							font_name: "fonts/Poppins/Poppins-Medium.ttf"
+							size_hint: 1, .8
+							font_size: "15dp"
+							pos_hint: {"center_x": .6, "top": 2.3}
+							on_release: root.deleteHistory()
+
+				
+				MDFloatLayout:
+					size_hint: 1, .85
+					pos_hint: {'center_x': .5, 'top': .95}
+
+					ScrollView:
+						size_hint: 1, .8
+						pos_hint: {'center_x': .5, 'top': .85}
+					    MDList:
+					        id: container
+					    	pos_hint: {'center_x': .5, 'top': .94}
+				MDFloatLayout:	
+					size_hint: 1, .1
+
+			
+##### PopUp win #####
+
+<PopupWin>:
+    size_hint: .9, None
+    height: dp(170)
+    font_name: "fonts/Poppins/Poppins-Medium.ttf"
+    title: "Enregistrement ..."
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+
+		BoxLayout:
+	        orientation: 'vertical'
+        	
+	        Label:
+	            size_hint_y: None
+	            height: dp(40)
+	            font_name: "fonts/Poppins/Poppins-Medium.ttf"
+	            text: 'Charge enregistrée avec succès !'
+	            
+        Button:
+            text: 'OK'
+            size_hint_y: None
+            height: dp(40)
+            on_press: root.dismiss()

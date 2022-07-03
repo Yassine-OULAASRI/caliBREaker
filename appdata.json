@@ -1,0 +1,19 @@
+{
+  "usersdeparts": [
+    {
+      "user_name": "yassine",
+      "network": 3,
+      "voltage": 220,
+      "loads": [
+        {
+          "rating_power": 1.0,
+          "cos_phi": 1.0
+        },
+        {
+          "rating_power": 1.0,
+          "cos_phi": 1.0
+        }
+      ]
+    }
+  ]
+}
